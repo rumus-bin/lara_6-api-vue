@@ -1,0 +1,36 @@
+version: "3.3"
+
+services:
+  nginx-lara-api:
+    build:
+      context: .
+      dockerfile: Docker/nginx/Dockerfile
+    ports:
+      - 8095:80
+    links:
+      - fpm-lara-api
+    volumes:
+      - ./:/var/www/laravel-docker
+  fpm-lara-api:
+    build:
+      context: .
+      dockerfile: Docker/fpm/Dockerfile
+    volumes:
+      - ./:/var/www/laravel-docker
+    links:
+      - lara-api-db
+  lara-api-db:
+    image: mysql:5.7
+    ports:
+      - 33061:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=lara-api-db
+      - MYSQL_DATABASE=lara-api-db
+    volumes:
+      - ./db-store:/var/lib/msql
+  lapi_adminer:
+    image: adminer
+    container_name: lapi_adminer
+    restart: always
+    ports:
+      - 6085:8080
