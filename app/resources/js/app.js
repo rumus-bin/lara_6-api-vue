@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('line-chart-component', require('./components/charts/line-chart/LineChartComponent').default);
 Vue.component('pie-chart-component', require('./components/charts/pie-chart/PieChartComponent').default);
 Vue.component('line-chart-random-component', require('./components/charts/line-chart/LineChartRandomComponent').default);
+Vue.component('table-list-component', require('./components/tables/TablesListComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

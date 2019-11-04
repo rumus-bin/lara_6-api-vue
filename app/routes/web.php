@@ -21,3 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::prefix('tables')->name('table.')->group(function () {
+    Route::get('/', 'TablesController@index')->name('index');
+    Route::get('/create', 'TablesController@create')->name('create');
+    Route::post('/store', 'TablesController@store')->name('store');
+});
+
+
+
